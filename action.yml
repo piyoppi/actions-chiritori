@@ -1,0 +1,27 @@
+name: 'actions-chiritori'
+description: 'chiritori for GitHub Actions'
+inputs:
+  filepattern:
+    description: 'Target file pattern'
+    required: true
+  encoding:
+    description: 'Character encoding of target files (If not set, UTF-8 is expected)'
+    default: ''
+  delimiter-start:
+    description: 'delimiter (start)'
+    default: '<!--'
+  delimiter-end:
+    description: 'delimiter (end)'
+    default: '-->'
+  time-limited-tag-name:
+    description: 'Tag name for time-limited content'
+    default: 'time-limited'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.filepattern }}
+    - ${{ inputs.time-limited-tag-name }}
+    - ${{ inputs.delimiter-start }}
+    - ${{ inputs.delimiter-end }}
+    - ${{ inputs.encoding }}
