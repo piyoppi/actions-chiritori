@@ -9,9 +9,6 @@ RUN wget https://github.com/piyoppi/chiritori/releases/download/v0.2.0/x86_64-un
   rm -rf target && \
   apk del wget
 
-RUN mkdir /app
-WORKDIR /app
+COPY entrypoint.sh /entrypoint.sh
 
-COPY entrypoint.sh /app/entrypoint.sh
-
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
