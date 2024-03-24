@@ -18,6 +18,8 @@ This action is for removing expired source code in the repository.
 
 This is an example of creating a Pull Request for HTML files in the repository and removing the expired code.
 
+([Example of a pull request created using this workflow](https://github.com/piyoppi/actions-sandbox/pull/3))
+
 ```yml
 name: Remove time-limited source code
 
