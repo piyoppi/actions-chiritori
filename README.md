@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: piyoppi/actions-chiritori@main
+      - uses: piyoppi/actions-chiritori@v1
         with:
           filepattern: ${{ env.FILE_PATTERN }}
 
