@@ -20,7 +20,8 @@ for file in $FILES; do
     chiritori --filename=$file --time-limited-tag-name="$TAGNAME" --delimiter-start="$DELIMITER_START" --delimiter-end="$DELIMITER_END" > $file.tmp
   else
     iconv -f $ENCODING -t UTF-8 $file | \
-    chiritori --time-limited-tag-name="$TAGNAME" --delimiter-start="$DELIMITER_START" --delimiter-end="$DELIMITER_END" > $file.tmp
+    chiritori --time-limited-tag-name="$TAGNAME" --delimiter-start="$DELIMITER_START" --delimiter-end="$DELIMITER_END" | \
+    iconv -f UTF-8 -t $ENCODING > $file.tmp
   fi
 
   mv $file.tmp $file
