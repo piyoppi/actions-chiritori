@@ -9,19 +9,31 @@ inputs:
     default: ''
   delimiter-start:
     description: 'delimiter (start)'
-    default: '<!--'
+    default: '<!-- <'
   delimiter-end:
     description: 'delimiter (end)'
-    default: '-->'
+    default: '> -->'
   time-limited-tag-name:
     description: 'Tag name for time-limited content'
     default: 'time-limited'
+  removal-marker-tag-name:
+    description: 'Tag name for removal-marker'
+    default: 'removal-marker'
+  removal-marker-target-config:
+    description: 'Config file specifying the name of the removal-marker to be removed. The content of the config file is indicated by the name of the removal target, separated by a newline'
+    default: ''
+  run-mode:
+    description: 'Run mode ("remove" or "list" or "list-all")'
+    default: 'remove'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.filepattern }}
     - ${{ inputs.time-limited-tag-name }}
+    - ${{ inputs.removal-marker-tag-name}}
+    - ${{ inputs.removal-marker-target-config }}
     - ${{ inputs.delimiter-start }}
     - ${{ inputs.delimiter-end }}
     - ${{ inputs.encoding }}
+    - ${{ inputs.run-mode }}

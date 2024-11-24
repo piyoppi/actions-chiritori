@@ -10,9 +10,12 @@ This action is for removing expired source code in the repository.
 | -- | -- |
 | `filepattern` | Target file pattern (default: `*.html`)|
 | `encoding` | Character encoding of target files. (Optional, default: `UTF-8`) |
-| `delimiter-start` | Delimiter (start) (Optional, default: `<!--`) |
-| `delimiter-end` | Delimiter (start) (Optional, default: `-->`) |
+| `delimiter-start` | Delimiter (start) (Optional, default: `<!-- <`) |
+| `delimiter-end` | Delimiter (start) (Optional, default: `> -->`) |
 | `time-limited-tag-name` | Tag name of Time limited source code (Optional, default: `time-limited`) |
+| `removal-marker-tag-name` | Tag name for removal-marker (Optional, default: `removal-marker`) |
+| `removal-marker-target-config` | Config file specifying the name of the removal-marker to be removed. For more details, See [Chiritori README](https://github.com/piyoppi/chiritori?tab=readme-ov-file#removal-marker) (Optional) |
+| `run-mode` | Run mode ("remove" or "list" or "list-all") (Optional, default: `remove`) |
 
 ## Example
 
