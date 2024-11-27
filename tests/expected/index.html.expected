@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sample Code</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <h1>Hello World</h1>
+    <p>This is a sample page with some code.</p>
+    <!-- <time-limited to="2999-12-31 23:59:59"> -->
+      Campaign!
+    <!-- </time-limited> -->
+  </body>
+</html>
