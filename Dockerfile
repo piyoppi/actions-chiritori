@@ -2,10 +2,10 @@ FROM alpine:3.14
 
 RUN apk add --no-cache wget gnu-libiconv
 
-RUN wget https://github.com/piyoppi/chiritori/releases/download/v1.3.0/x86_64-unknown-linux-musl.tar.gz && \
-  tar -zxvf x86_64-unknown-linux-musl.tar.gz && \
-  rm x86_64-unknown-linux-musl.tar.gz && \
-  cp target/x86_64-unknown-linux-musl/release/chiritori /usr/local/bin/chiritori && \
+RUN wget https://github.com/piyoppi/chiritori/releases/download/v1.3.0/chiritori-linux-x86_64-musl.tar.gz && \
+  tar -zxvf chiritori-linux-x86_64-musl.tar.gz && \
+  rm chiritori-linux-x86_64-musl.tar.gz && \
+  cp chiritori /usr/local/bin/chiritori && \
   rm -rf target && \
   apk del wget
 
