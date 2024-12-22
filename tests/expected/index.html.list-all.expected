@@ -1,33 +1,33 @@
 Processing ./index.html
 
 -------- [ 1 ]  Ready  --------
-    [32m_start[0m
-    [31m<!-- <time-limited to="2019-12-31 23:59:59"> -->
-      <p>This content is only available until the end of the year.</p>
-      <p>After that, it will be removed from the page.</p>
-    <!-- </time-limited> -->[0m
-                           [32m‾end[0m
+             [32m_start[0m
+     10 |    [31m<!-- <time-limited to="2019-12-31 23:59:59"> -->[0m
+     11 |[31m      <p>This content is only available until the end of the year.</p>[0m
+     12 |[31m      <p>After that, it will be removed from the page.</p>[0m
+     13 |[31m    <!-- </time-limited> -->[0m
+                                    [32m‾end[0m
 -------- [ 2 ] Pending --------
-    [32m_start[0m
-    [33m<!-- <time-limited to="2999-12-31 23:59:59"> -->
-      Campaign!
-      <!-- <time-limited to="2001-12-31 23:59:59"> -->
-        40% off! Only until the 2001/12/31!
-      <!-- </time-limited> -->
-    <!-- </time-limited> -->[0m
-                           [32m‾end[0m
+             [32m_start[0m
+     14 |    [33m<!-- <time-limited to="2999-12-31 23:59:59"> -->[0m
+     15 |[33m      Campaign![0m
+     16 |[33m      <!-- <time-limited to="2001-12-31 23:59:59"> -->[0m
+     17 |[33m        40% off! Only until the 2001/12/31![0m
+     18 |[33m      <!-- </time-limited> -->[0m
+     19 |[33m    <!-- </time-limited> -->[0m
+                                    [32m‾end[0m
 -------- [ 3 ]  Ready  --------
-      [32m_start[0m
-      [31m<!-- <time-limited to="2001-12-31 23:59:59"> -->
-        40% off! Only until the 2001/12/31!
-      <!-- </time-limited> -->[0m
-                             [32m‾end[0m
+               [32m_start[0m
+     16 |      [31m<!-- <time-limited to="2001-12-31 23:59:59"> -->[0m
+     17 |[31m        40% off! Only until the 2001/12/31![0m
+     18 |[31m      <!-- </time-limited> -->[0m
+                                      [32m‾end[0m
 -------- [ 4 ]  Ready  --------
-    [32m_start[0m
-    [31m<!-- <time-limited to="2001-12-31 23:59:59"> -->
-      <!-- <time-limited to="2999-12-31 23:59:59"> -->
-        Campaign!
-      <!-- </time-limited> -->
-      until the 2001/12/31!
-    <!-- </time-limited> -->[0m
-                           [32m‾end[0m
+             [32m_start[0m
+     20 |    [31m<!-- <time-limited to="2001-12-31 23:59:59"> -->[0m
+     21 |[31m      <!-- <time-limited to="2999-12-31 23:59:59"> -->[0m
+     22 |[31m        Campaign![0m
+     23 |[31m      <!-- </time-limited> -->[0m
+     24 |[31m      until the 2001/12/31![0m
+     25 |[31m    <!-- </time-limited> -->[0m
+                                    [32m‾end[0m
