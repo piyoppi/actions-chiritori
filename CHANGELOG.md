@@ -1,3 +1,8 @@
+# 2.1.0
+
+- Update chiritori [v1.4.0](https://github.com/piyoppi/chiritori/releases/tag/v1.4.0)
+- It is now possible to annotate a diff included in a Pull Request if it contains removal-markers.
+
 # 2.0.1
 
 Fixed incorrect chiritori url (v2.0.0 is not working).
