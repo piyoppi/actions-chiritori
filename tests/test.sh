@@ -13,51 +13,105 @@ assert_file() {
   fi
 }
 
-./cleanup_test.sh
+cleanup_test() {
+  rm -rf ./tmp/
+  mkdir ./tmp
+}
+
+setup_test() {
+  FILES="index.eucjp.php index.html index.js"
+
+  for file in $FILES; do
+    cp files/$file tmp/$file
+  done
+}
+
+cleanup_test
 
 # --------------------------------------------------------------------------------------------
 # Test Encoding Conversion
 
-../entrypoint.sh '*.php' 'time-limited' 'removal-marker' '' '# <' '> #' 'euc-jp' 'remove' > /dev/null
+setup_test
 
-assert_file "Test Encoding Conversion" expected/index.eucjp.php.expected index.eucjp.php
+../entrypoint.sh './tmp' '*.php' 'time-limited' 'removal-marker' '' '# <' '> #' 'euc-jp' 'remove' '' '' '' '' > /dev/null
 
-./cleanup_test.sh
+assert_file "Test Encoding Conversion" expected/index.eucjp.php.expected tmp/index.eucjp.php
+
+cleanup_test
 
 # --------------------------------------------------------------------------------------------
 # Test index.html (default charset (UTF-8))
 
-../entrypoint.sh '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'remove' > /dev/null
+setup_test
 
-assert_file "Test index.html (default charset (UTF-8))" expected/index.html.expected index.html
+../entrypoint.sh './tmp' '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'remove' '' '' '' '' > /dev/null
 
-./cleanup_test.sh
+assert_file "Test index.html (default charset (UTF-8))" expected/index.html.expected tmp/index.html
+
+cleanup_test
 
 # --------------------------------------------------------------------------------------------
 # Test list-all index.html
 
-../entrypoint.sh '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'list-all' > ./tmp/tmp-index.html.list-all.actual
+setup_test
+
+../entrypoint.sh './tmp' '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'list-all' '' '' '' '' > ./tmp/tmp-index.html.list-all.actual
 
 assert_file "Test list-all index.html" expected/index.html.list-all.expected ./tmp/tmp-index.html.list-all.actual
 
-./cleanup_test.sh
+cleanup_test
 
 # --------------------------------------------------------------------------------------------
 # Test list index.html
 
-../entrypoint.sh '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'list' > ./tmp/tmp-index.html.list.actual
+setup_test
+
+../entrypoint.sh './tmp' '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'list' '' '' '' '' > ./tmp/tmp-index.html.list.actual
 
 assert_file "Test list index.html" expected/index.html.list.expected ./tmp/tmp-index.html.list.actual
 
-./cleanup_test.sh
+cleanup_test
 
 # --------------------------------------------------------------------------------------------
 # Test index.js
 
+setup_test
+
 echo 'awesome-feature' > ./tmp/target-config
 
-../entrypoint.sh '*.js' 'time-limited-code' 'removal-marker-tag' './tmp/target-config' '// --' '-- //' '' 'remove' > /dev/null
+../entrypoint.sh './tmp' '*.js' 'time-limited-code' 'removal-marker-tag' './tmp/target-config' '// --' '-- //' '' 'remove' '' '' '' '' > /dev/null
 
-assert_file "Test index.js" expected/index.js.expected index.js
+assert_file "Test index.js" expected/index.js.expected tmp/index.js
 
-./cleanup_test.sh
+cleanup_test
+
+# --------------------------------------------------------------------------------------------
+# Test annotation
+
+setup_test
+
+../entrypoint.sh './tmp' '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'list-all' '' 'annotation' '' '' > ./tmp/tmp-index.html.annotation.actual
+
+assert_file "Test annotate index.html" expected/index.html.annotation.expected ./tmp/tmp-index.html.annotation.actual
+
+cleanup_test
+
+# --------------------------------------------------------------------------------------------
+# Test annotation (GitHub Diff)
+
+setup_test
+
+cd tmp/ && git init && git add . && git commit -m "temporary git" && cd -
+
+cp files/index.html.updated tmp/index.html
+cp ../entrypoint.sh tmp/entrypoint.sh
+
+cd tmp/ && git commit -am "changed" && cd -
+
+cd tmp/ && git diff HEAD^..HEAD && cd -
+
+cd tmp && ./entrypoint.sh '.' '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'list-all' 'diff' 'annotation' 'HEAD^' 'HEAD' > ../tmp/tmp-index.html.diff.annotation.actual && cd -
+
+assert_file "Test diff annotate index.html" expected/index.html.diff.annotation.expected ./tmp/tmp-index.html.diff.annotation.actual
+
+cleanup_test
