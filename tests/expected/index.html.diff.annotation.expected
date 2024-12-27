@@ -1,0 +1,3 @@
+Processing index.html
+::notice file=index.html,line=20,col=0::Removal-Marker Detected.
+::warning file=index.html,line=29,col=0::Removal-Marker Detected.

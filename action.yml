@@ -25,10 +25,24 @@ inputs:
   run-mode:
     description: 'Run mode ("remove" or "list" or "list-all")'
     default: 'remove'
+  target-file-mode:
+    description: 'Target file mode ("all" or "diff")'
+    default: 'all'
+  report-mode:
+    description: 'Report mode ("none" or "annotation")'
+    default: 'none'
+  base-sha:
+    description: 'Diff base sha (available when `target-file-mode` is "diff")'
+    default: ${{ github.base_ref }}
+  head-sha:
+    description: 'Diff HEAD sha (available when `target-file-mode` is "diff")'
+    default: ${{ github.sha }}
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - "."
     - ${{ inputs.filepattern }}
     - ${{ inputs.time-limited-tag-name }}
     - ${{ inputs.removal-marker-tag-name}}
@@ -37,3 +51,7 @@ runs:
     - ${{ inputs.delimiter-end }}
     - ${{ inputs.encoding }}
     - ${{ inputs.run-mode }}
+    - ${{ inputs.target-file-mode }}
+    - ${{ inputs.report-mode }}
+    - ${{ inputs.base-sha }}
+    - ${{ inputs.head-sha }}

@@ -1,0 +1,5 @@
+Processing ./tmp/index.html
+::warning file=./tmp/index.html,line=10,col=0::Removal-Marker Detected.
+::notice file=./tmp/index.html,line=14,col=0::Removal-Marker Detected.
+::warning file=./tmp/index.html,line=16,col=0::Removal-Marker Detected.
+::warning file=./tmp/index.html,line=20,col=0::Removal-Marker Detected.
