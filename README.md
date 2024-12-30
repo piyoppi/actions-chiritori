@@ -2,24 +2,8 @@
 
 [Chiritori](https://github.com/piyoppi/chiritori) on GitHub Actions.
 
-This action is for removing expired source code in the repository.
-
-## Inputs
-
-| name | detail |
-| -- | -- |
-| `filepattern` | Target file pattern (default: `*.html`)|
-| `encoding` | Character encoding of target files. (Optional, default: `UTF-8`) |
-| `delimiter-start` | Delimiter (start) (Optional, default: `<!-- <`) |
-| `delimiter-end` | Delimiter (start) (Optional, default: `> -->`) |
-| `time-limited-tag-name` | Tag name of Time limited source code (Optional, default: `time-limited`) |
-| `removal-marker-tag-name` | Tag name for removal-marker (Optional, default: `removal-marker`) |
-| `removal-marker-target-config` | Config file specifying the name of the removal-marker to be removed. For more details, See [Chiritori README](https://github.com/piyoppi/chiritori?tab=readme-ov-file#removal-marker) (Optional) |
-| `run-mode` | Run mode ("remove" or "list" or "list-all") (Optional, default: `remove`) |
-| `target-file-mode` | Target file mode ("all" or "diff") (Optional, default: `all`) |
-| `report-mode` | Report mode ("none" or "annotation") (Optional, default: `none`) |
-| `base-sha` | Base SHA for diff (available when `target-file-mode` is "diff") |
-| `head-sha` | Head SHA for diff (available when `target-file-mode` is "diff") |
+- Remove pre-tagged source code in the repository
+- Annotate of removal markers for pull request diffs
 
 ## Example
 
@@ -101,7 +85,7 @@ jobs:
 
       - run: echo ${{ inputs.feature }} > feature.txt
 
-      - uses: piyoppi/actions-chiritori@update-chiritori-v1.4.0
+      - uses: piyoppi/actions-chiritori@v2
         with:
           filepattern: ${{ env.FILE_PATTERN }}
           delimiter-start: "<!--"
@@ -172,3 +156,39 @@ jobs:
           report-mode: "annotation"
           base-sha: ${{ env.BASE_SHA }}
 ```
+
+## Inputs
+
+### Required
+
+| name | detail |
+| -- | -- |
+| `filepattern` | Target file pattern |
+
+### Optional (Chiritori configuration)
+
+| name | detail |
+| -- | -- |
+| `delimiter-start` | Start delimiter (default: `<!-- <`) |
+| `delimiter-end` | End Delimiter (default: `> -->`) |
+| `time-limited-tag-name` | Tag name of Time limited source code (default: `time-limited`) |
+| `removal-marker-tag-name` | Tag name for removal-marker (default: `removal-marker`) |
+| `removal-marker-target-config` | Config file specifying the name of the removal-marker to be removed. For more details, See [Chiritori README](https://github.com/piyoppi/chiritori?tab=readme-ov-file#removal-marker) |
+
+### Optional (Actions behavior)
+
+| name | detail |
+| -- | -- |
+| `run-mode` | "remove": Remove pre-tagged source codes / "list": List removal tags (Excluding tags not targeted to removal) / "list-all": List all removal tags) (default: `remove`) |
+| `target-file-mode` | "all": All files in the repository / "diff": Files included in pull request (default: `all`) |
+| `encoding` | Character encoding of target files. (default: `UTF-8`) |
+
+### Optional (run-mode is "list" or "list-all")
+
+| name | detail |
+| -- | -- |
+| `report-mode` | "none": Print to log (stdout) / "annotation": Annotate in the pull request diffs) (default: `none`) |
+| `base-sha` | Base SHA for diff (Required when `target-file-mode` is "diff") |
+| `head-sha` | Head SHA for diff (default: `github.sha`, available when `target-file-mode` is "diff") |
+
+
