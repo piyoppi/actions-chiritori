@@ -138,7 +138,7 @@ for file in $FILES; do
     chiritori_cmd="$chiritori_cmd --removal-marker-target-config=\"$REMOVAL_MARKER_TARGET_CONFIG\""
   fi
 
-  if [ -n "$TIME_LIMITED_CLEANUP_UNBOUNDED" ]; then
+  if [ "$(echo "$TIME_LIMITED_CLEANUP_UNBOUNDED" | tr 'A-Z' 'a-z')" = "true" ]; then
     chiritori_cmd="$chiritori_cmd --time-limited-cleanup-unbounded"
   fi
 
