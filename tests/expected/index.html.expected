@@ -10,5 +10,10 @@
     <!-- <time-limited to="2999-12-31 23:59:59"> -->
       Campaign!
     <!-- </time-limited> -->
+
+    <p>This is an unbounded time-limited content (past).</p>
+    <!-- <time-limited from="2999-01-01 00:00:00"> -->
+      <p>This is an unbounded time-limited content (future).</p>
+    <!-- </time-limited> -->
   </body>
 </html>

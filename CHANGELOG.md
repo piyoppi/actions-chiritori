@@ -1,3 +1,7 @@
+# 2.2.0
+
+- Update chiritori [v1.5.0](https://github.com/piyoppi/chiritori/releases/tag/v1.5.0)
+
 # 2.1.1
 
 - Update chiritori [v1.4.1](https://github.com/piyoppi/chiritori/releases/tag/v1.4.1)
