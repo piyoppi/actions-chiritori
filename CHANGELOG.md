@@ -1,3 +1,7 @@
+# 2.2.1
+
+- `time-limited-cleanup-unbounded` option requires `"true"` to be enabled
+
 # 2.2.0
 
 - Update chiritori [v1.5.0](https://github.com/piyoppi/chiritori/releases/tag/v1.5.0)
