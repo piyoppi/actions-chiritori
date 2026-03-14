@@ -44,7 +44,7 @@ cleanup_test
 
 setup_test
 
-../entrypoint.sh './tmp' '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'remove' '' '' '' '' > /dev/null
+../entrypoint.sh './tmp' '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'remove' '' '' '' '' 'true' > /dev/null
 
 assert_file "Test index.html (default charset (UTF-8))" expected/index.html.expected tmp/index.html
 
@@ -55,7 +55,7 @@ cleanup_test
 
 setup_test
 
-../entrypoint.sh './tmp' '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'list-all' '' '' '' '' > ./tmp/tmp-index.html.list-all.actual
+../entrypoint.sh './tmp' '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'list-all' '' '' '' '' 'true' > ./tmp/tmp-index.html.list-all.actual
 
 assert_file "Test list-all index.html" expected/index.html.list-all.expected ./tmp/tmp-index.html.list-all.actual
 
@@ -66,7 +66,7 @@ cleanup_test
 
 setup_test
 
-../entrypoint.sh './tmp' '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'list' '' '' '' '' > ./tmp/tmp-index.html.list.actual
+../entrypoint.sh './tmp' '*.html' 'time-limited' 'removal-marker' '' '<!-- <' '> -->' '' 'list' '' '' '' '' 'true' > ./tmp/tmp-index.html.list.actual
 
 assert_file "Test list index.html" expected/index.html.list.expected ./tmp/tmp-index.html.list.actual
 

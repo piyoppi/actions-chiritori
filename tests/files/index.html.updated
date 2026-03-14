@@ -29,5 +29,11 @@
     <!-- <time-limited to="1999-12-31 23:59:59"> -->
       Diff 2
     <!-- </time-limited> -->
+    <!-- <time-limited from="2020-01-01 00:00:00"> -->
+      <p>This is an unbounded time-limited content (past).</p>
+    <!-- </time-limited> -->
+    <!-- <time-limited from="2999-01-01 00:00:00"> -->
+      <p>This is an unbounded time-limited content (future).</p>
+    <!-- </time-limited> -->
   </body>
 </html>

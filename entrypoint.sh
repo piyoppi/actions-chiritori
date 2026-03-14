@@ -13,6 +13,7 @@ TARGET_FILE_MODE="${10}"
 REPORT_MODE="${11}"
 BASE_SHA="${12}"
 HEAD_SHA="${13}"
+TIME_LIMITED_CLEANUP_UNBOUNDED="${14}"
 
 DIFF_REF="$BASE_SHA..$HEAD_SHA"
 
@@ -135,6 +136,10 @@ for file in $FILES; do
 
   if [ -n "$REMOVAL_MARKER_TARGET_CONFIG" ]; then
     chiritori_cmd="$chiritori_cmd --removal-marker-target-config=\"$REMOVAL_MARKER_TARGET_CONFIG\""
+  fi
+
+  if [ -n "$TIME_LIMITED_CLEANUP_UNBOUNDED" ]; then
+    chiritori_cmd="$chiritori_cmd --time-limited-cleanup-unbounded"
   fi
 
   if [ "$RUN_MODE" = "remove" ]; then

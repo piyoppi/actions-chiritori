@@ -16,6 +16,9 @@ inputs:
   time-limited-tag-name:
     description: 'Tag name for time-limited content'
     default: 'time-limited'
+  time-limited-cleanup-unbounded:
+    description: 'Cleanup unbounded time-limited tag'
+    default: ''
   removal-marker-tag-name:
     description: 'Tag name for removal-marker'
     default: 'removal-marker'
@@ -55,3 +58,4 @@ runs:
     - ${{ inputs.report-mode }}
     - ${{ inputs.base-sha }}
     - ${{ inputs.head-sha }}
+    - ${{ inputs.time-limited-cleanup-unbounded }}

@@ -22,3 +22,11 @@ Processing ./tmp/index.html
      24 |[31m      until the 2001/12/31![0m
      25 |[31m    <!-- </time-limited> -->[0m
                                     [32m‾end[0m
+-------- [ 4 ]  Ready  --------
+             [32m_start[0m
+     26 |    [31m<!-- <time-limited from="2020-01-01 00:00:00"> -->[0m
+                                                              [32m‾end[0m
+-------- [ 5 ]  Ready  --------
+             [32m_start[0m
+     28 |    [31m<!-- </time-limited> -->[0m
+                                    [32m‾end[0m
