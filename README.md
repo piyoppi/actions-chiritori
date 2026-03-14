@@ -174,7 +174,7 @@ jobs:
 | `time-limited-tag-name` | Tag name of Time limited source code (default: `time-limited`) |
 | `removal-marker-tag-name` | Tag name for removal-marker (default: `removal-marker`) |
 | `removal-marker-target-config` | Config file specifying the name of the removal-marker to be removed. For more details, See [Chiritori README](https://github.com/piyoppi/chiritori?tab=readme-ov-file#removal-marker) |
-| `time-limited-cleanup-unbounded` | When set, removes the markers of unbounded time-limited tags (tags with only a `from` attribute and no `to` attribute) whose `from` date has passed. The content inside the markers is preserved. |
+| `time-limited-cleanup-unbounded` | Set to `"true"` to remove the markers of unbounded time-limited tags (tags with only a `from` attribute and no `to` attribute) whose `from` date has passed. The content inside the markers is preserved. |
 
 ### Optional (Actions behavior)
 
